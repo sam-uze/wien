@@ -31,6 +31,9 @@ async function loadSights(url) {
     let response = await fetch(url);
     let jasondata = await response.json();
     //console.log(jasondata);
-    L.geoJSON(jasondata).addTo(map);
+    L.geoJSON(jasondata,{
+        attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
+    }).addTo(map);
 }
 loadSights("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json");
+
