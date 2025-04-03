@@ -20,7 +20,13 @@ let overlays = {
 };
 //Layercontrol
 L.control.layers({
-    "BasemapAT grau": L.tileLayer.provider('Stadia.StamenWatercolor').addTo(map)
+    "BasemapAT": L.tileLayer.provider('BasemapAT.basemap'),
+    "BasemapAT grau": L.tileLayer.provider('BasemapAT.grau').addTo(map),
+    "BasemapAT HighDPI": L.tileLayer.provider('BasemapAT.highdpi'),
+    "BasemapAT Orthofoto": L.tileLayer.provider('BasemapAT.orthofoto'),
+    "BasemapAT Overlay": L.tileLayer.provider('BasemapAT.overlay'),
+    "BasemapAT Terrain": L.tileLayer.provider('BasemapAT.terrain'),
+    "BasemapAT Surface": L.tileLayer.provider('BasemapAT.surface'),
 },{
     "Sehenswürdigkeiten": overlays.sights,
     "Vienna sightseeing Linien": overlays.lines,
