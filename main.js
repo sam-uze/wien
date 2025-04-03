@@ -37,3 +37,39 @@ async function loadSights(url) {
 }
 loadSights("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json");
 
+//sehnswürdigkeiten Touristische Kraftfahrlinien Liniennetz Vienna Sightseeing Linie Wien 
+async function loadSights(url) {
+    //console.log(url);
+    let response = await fetch(url);
+    let jasondata = await response.json();
+    //console.log(jasondata);
+    L.geoJSON(jasondata,{
+        attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
+    }).addTo(map);
+}
+loadSights("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json");
+
+//sehnswürdigkeiten Touristische Kraftfahrlinien Haltestellen Vienna Sightseeing Linie Standorte Wien
+async function loadSights(url) {
+    //console.log(url);
+    let response = await fetch(url);
+    let jasondata = await response.json();
+    //console.log(jasondata);
+    L.geoJSON(jasondata,{
+        attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
+    }).addTo(map);
+}
+loadSights("hhttps://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json");
+
+//sehnswürdigkeiten Fußgängerzone
+async function loadSights(url) {
+    //console.log(url);
+    let response = await fetch(url);
+    let jasondata = await response.json();
+    //console.log(jasondata);
+    L.geoJSON(jasondata,{
+        attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
+    }).addTo(map);
+}
+loadSights("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FUSSGEHERZONEOGD&srsName=EPSG:4326&outputFormat=json");
+
