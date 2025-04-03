@@ -17,6 +17,14 @@ L.tileLayer('https://mapsneu.wien.gv.at/basemap/bmapgrau/normal/google3857/{z}/{
     attribution: 'Hintergrundkarte: <a href="https://www.basemap.at">basemap.at</a>'
 }).addTo(map);
 
+//Layercontrol
+L.control.layers({
+
+},{
+
+}).addTo(map);
+
+//Maßstab
 L.control.scale({
     imperial: false,
 }).addTo(map);
