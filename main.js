@@ -31,7 +31,6 @@ async function loadSights(url) {
         attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
     }).addTo(map);
 }
-loadSights("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json");
 
 //sehnswürdigkeiten Touristische Kraftfahrlinien Liniennetz Vienna Sightseeing Linie Wien 
 async function loadLines(url) {
@@ -43,7 +42,6 @@ async function loadLines(url) {
         attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
     }).addTo(map);
 }
-loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json");
 
 //sehnswürdigkeiten Touristische Kraftfahrlinien Haltestellen Vienna Sightseeing Linie Standorte Wien
 async function loadStops(url) {
@@ -55,7 +53,6 @@ async function loadStops(url) {
         attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
     }).addTo(map);
 }
-loadStops("hhttps://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json");
 
 //sehnswürdigkeiten Fußgängerzone
 async function loadZones(url) {
@@ -67,5 +64,10 @@ async function loadZones(url) {
         attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>"
     }).addTo(map);
 }
+
+// GeoJOSN Daten laden und visualisieren
+loadSights("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json");
+loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json");
+loadStops("hhttps://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json");
 loadZones("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FUSSGEHERZONEOGD&srsName=EPSG:4326&outputFormat=json");
 
