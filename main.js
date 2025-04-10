@@ -62,7 +62,10 @@ async function loadSights(url) {
             console.log(feature.properties);
             layer.bindPopup(`
                 <img src="${feature.properties.THUMBNAIL}" alt="*">
-                `);
+                <h4>${feature.properties.NAME}</h4>
+                <addess>${feature.properties.ADRESSE}</addess>
+                <a href="${feature.properties.WEITERE_INF}">Webseite</a>
+            `);
         }
     }).addTo(overlays.sights);
 }
