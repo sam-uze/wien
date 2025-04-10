@@ -28,7 +28,7 @@ L.control.layers({
     "BasemapAT Overlay": L.tileLayer.provider('BasemapAT.overlay'),
     "BasemapAT Terrain": L.tileLayer.provider('BasemapAT.terrain'),
     "BasemapAT Surface": L.tileLayer.provider('BasemapAT.surface'),
-},{
+}, {
     "Sehenswürdigkeiten": overlays.sights,
     "Vienna sightseeing Linien": overlays.lines,
     "Vienna sightseeing Haltestellen": overlays.stops,
@@ -47,10 +47,10 @@ async function loadSights(url) {
     let response = await fetch(url);
     let jasondata = await response.json();
     //console.log(jasondata);
-    L.geoJSON(jasondata,{
+    L.geoJSON(jasondata, {
         attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>",
-        pointToLayer: function(feature, latlng) {
-            return L.marker(latlng,{
+        pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: "icons/photo.png",
                     iconAnchor: [16, 37],
@@ -67,29 +67,29 @@ async function loadLines(url) {
     let response = await fetch(url);
     let jasondata = await response.json();
     //console.log(jasondata);
-    L.geoJSON(jasondata,{
+    L.geoJSON(jasondata, {
         attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>",
         style: function (feature) {
             //console.log(feature);
             let lineColor;
-            if(feature.properties.LINE_NAME == "Yellow Line") {
+            if (feature.properties.LINE_NAME == "Yellow Line") {
                 lineColor = "#FFDC00";
-            }else if(feature.properties.LINE_NAME == "Blue Line") {
+            } else if (feature.properties.LINE_NAME == "Blue Line") {
                 lineColor = "#0074D9";
-            }else if(feature.properties.LINE_NAME == "Green Line") {
+            } else if (feature.properties.LINE_NAME == "Green Line") {
                 lineColor = "#2ECC40";
-            }else if(feature.properties.LINE_NAME == "Grey Line") {
+            } else if (feature.properties.LINE_NAME == "Grey Line") {
                 lineColor = "#AAAAAA";
-            }else if(feature.properties.LINE_NAME == "Orange Line") {
+            } else if (feature.properties.LINE_NAME == "Orange Line") {
                 lineColor = "#FF851B";
-            }else if(feature.properties.LINE_NAME == "Red Line") {
+            } else if (feature.properties.LINE_NAME == "Red Line") {
                 lineColor = "#FF4136";
-            } else{
+            } else {
                 lineColor = "#111111";
             }
             return {
                 color: lineColor
-                
+
             }
         }
     }).addTo(overlays.lines);
@@ -101,19 +101,19 @@ async function loadStops(url) {
     let response = await fetch(url);
     let jasondata = await response.json();
     //console.log(jasondata);
-    L.geoJSON(jasondata,{
+    L.geoJSON(jasondata, {
         attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>",
-        pointToLayer: function(feature, latlng){
+        pointToLayer: function (feature, latlng) {
             console.log(feature.properties);
-            
-            return L.marker(latlng,{
+
+            return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: `icons/bus_${feature.properties.LINE_ID}.png`,
                     iconAnchor: [16, 37],
                     popupAnchor: [0, -37],
                 })
             });
-            
+
         }
 
     }).addTo(overlays.stops);
@@ -125,12 +125,12 @@ async function loadZones(url) {
     let response = await fetch(url);
     let jasondata = await response.json();
     //console.log(jasondata);
-    L.geoJSON(jasondata,{
+    L.geoJSON(jasondata, {
         attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>",
         style: function (feature) {
             //console.log(feature);
             return {
-                color:"#F012BE",
+                color: "#F012BE",
                 weight: 1,
                 opacity: 0.4,
                 fillOpacity: 0.1,
@@ -145,25 +145,25 @@ async function loadHotels(url) {
     let response = await fetch(url);
     let jasondata = await response.json();
     //console.log(jasondata);
-    L.geoJSON(jasondata,{
+    L.geoJSON(jasondata, {
         attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>",
-        pointToLayer: function(feature, latlng) {
+        pointToLayer: function (feature, latlng) {
             console.log(feature.properties);
             let iconName;
-            if(feature.properties.KATEGORIE_TXT == "1*") {
+            if (feature.properties.KATEGORIE_TXT == "1*") {
                 iconName = "hotel_1stars.png";
-            }else if(feature.properties.KATEGORIE_TXT == "2*") {
+            } else if (feature.properties.KATEGORIE_TXT == "2*") {
                 iconName = "hotel_2stars.png";
-            }else if(feature.properties.KATEGORIE_TXT == "3*") {
+            } else if (feature.properties.KATEGORIE_TXT == "3*") {
                 iconName = "hotel_3stars.png";
-            }else if(feature.properties.KATEGORIE_TXT == "4*") {
+            } else if (feature.properties.KATEGORIE_TXT == "4*") {
                 iconName = "hotel_4stars.png";
-            }else if(feature.properties.KATEGORIE_TXT == "5*") {
+            } else if (feature.properties.KATEGORIE_TXT == "5*") {
                 iconName = "hotel_5stars.png";
-            }else{
+            } else {
                 iconName = "hotel_0stars.png";
             }
-            return L.marker(latlng,{
+            return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl: `icons/${iconName}`,
                     iconAnchor: [16, 37],
