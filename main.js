@@ -64,7 +64,7 @@ async function loadSights(url) {
                 <img src="${feature.properties.THUMBNAIL}" alt="*">
                 <h4>${feature.properties.NAME}</h4>
                 <addess>${feature.properties.ADRESSE}</addess>
-                <a href="${feature.properties.WEITERE_INF}">Webseite</a>
+                <a href="${feature.properties.WEITERE_INF}"target="Wien">Webseite</a>
             `);
         }
     }).addTo(overlays.sights);
