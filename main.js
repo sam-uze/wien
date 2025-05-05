@@ -106,7 +106,7 @@ async function loadLines(url) {
             }
         },
         onEachFeature: function (feature, layer) {
-            console.log(feature.properties);
+            //console.log(feature.properties);
             layer.bindPopup(`
                 <h4><i class="fa-solid fa-bus"></i> ${feature.properties.LINE_NAME}</h4>
                 <p><i class="fa-regular fa-circle-stop"></i> ${feature.properties.FROM_NAME}<br>
@@ -126,7 +126,7 @@ async function loadStops(url) {
     L.geoJSON(jasondata, {
         attribution: "Datenquelle: <a href='https://data.wien.gv.at'>Stadt Wien</a>",
         pointToLayer: function (feature, latlng) {
-            console.log(feature.properties);
+            //console.log(feature.properties);
 
             return L.marker(latlng, {
                 icon: L.icon({
@@ -136,6 +136,13 @@ async function loadStops(url) {
                 })
             });
 
+        },
+        onEachFeature: function (feature, layer) {
+            //console.log(feature.properties);
+            layer.bindPopup(`
+                <h4><i class="fa-solid fa-bus"></i> ${feature.properties.LINE_NAME}</h4>
+                <p>${feature.properties.STAT_NAME} </p>
+            `);
         }
 
     }).addTo(overlays.stops);
@@ -157,6 +164,13 @@ async function loadZones(url) {
                 opacity: 0.4,
                 fillOpacity: 0.1,
             }
+        },
+        onEachFeature: function (feature, layer) {
+            console.log(feature.properties);
+            layer.bindPopup(`
+                <h4><i class="fa-solid fa-bus"></i> ${feature.properties.LINE_NAME}</h4>
+                <p>${feature.properties.STAT_NAME} </p>
+            `);
         }
     }).addTo(overlays.zones);
 }
