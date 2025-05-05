@@ -168,8 +168,9 @@ async function loadZones(url) {
         onEachFeature: function (feature, layer) {
             console.log(feature.properties);
             layer.bindPopup(`
-                <h4><i class="fa-solid fa-bus"></i> ${feature.properties.LINE_NAME}</h4>
-                <p>${feature.properties.STAT_NAME} </p>
+                <h4>${feature.properties.ADRESSE}</h4>
+                <p><i class="fa-regular fa-clock"></i> ${feature.properties.ZEITRAUM} <br>
+                <i class="fa-solid fa-circle-info"></i> ${feature.properties.AUSN_TEXT}</p>
             `);
         }
     }).addTo(overlays.zones);
