@@ -138,10 +138,10 @@ async function loadStops(url) {
 
         },
         onEachFeature: function (feature, layer) {
-            //console.log(feature.properties);
+            console.log(feature.properties);
             layer.bindPopup(`
                 <h4><i class="fa-solid fa-bus"></i> ${feature.properties.LINE_NAME}</h4>
-                <p>${feature.properties.STAT_NAME} </p>
+                <p>${feature.properties.LINE_ID} ${feature.properties.STAT_NAME} </p>
             `);
         }
 
@@ -209,7 +209,7 @@ async function loadHotels(url) {
             });
         },
         onEachFeature: function (feature, layer) {
-            console.log(feature.properties);
+            //console.log(feature.properties);
             layer.bindPopup(`
                 <h3>${feature.properties.BETRIEB}</h3>
                 <h4>${feature.properties.BETRIEBSART_TXT} ${feature.properties.KATEGORIE_TXT}</h4>
